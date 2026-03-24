@@ -400,7 +400,7 @@ export function updateSelectionsAndPane(scope = globalScope) {
  * @param {boolean} resetNodes - boolean to reset all nodes
  * @category engine
  */
-export function play(scope = globalScope, resetNodes = false) {
+export function play(scope = globalScope, resetNodes = false, captureLabel = 'Simulation Step') {
     if (errorDetected) return // Don't simulate until error is fixed
     if (loading === true) return // Don't simulate until loaded
 
@@ -448,6 +448,11 @@ export function play(scope = globalScope, resetNodes = false) {
 
         forceResetNodesSet(true);
         showError('Contention Error: One or more bus contentions in the circuit (check highlighted nodes)');
+    }
+
+    // Hook for time travel debugger - only for manual simulation steps
+    if (captureLabel !== 'Clock Tick' && window.timeTravelCaptureHook) {
+        window.timeTravelCaptureHook(captureLabel);
     }
 }
 

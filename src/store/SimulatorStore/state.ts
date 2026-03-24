@@ -18,6 +18,7 @@ export interface State {
   errorMessages: string[];
   successMessages: string[];
   circuit_name_clickable: boolean;
+  timeTravelEnabled: boolean;
   dialogBox: {
     combinationalanalysis_dialog: boolean;
     hex_bin_dec_converter_dialog: boolean;
@@ -52,6 +53,7 @@ export const useState = defineStore({
       errorMessages: [],
       successMessages: [],
       circuit_name_clickable: false,
+      timeTravelEnabled: false,
       dialogBox: {
         combinationalanalysis_dialog: false,
         hex_bin_dec_converter_dialog: false,

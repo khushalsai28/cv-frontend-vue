@@ -45,7 +45,7 @@ export function clockTick() {
   updateCanvasSet(true);
   globalScope.clockTick();
   plotArea.nextCycle();
-  play();
+  play(globalScope, false, 'Clock Tick');
   scheduleUpdate(0, 20);
 }
 
